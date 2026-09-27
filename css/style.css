@@ -524,6 +524,10 @@ h3 {
 	gap: 1rem;
 }
 
+.capability-grid .capability-card:last-child:nth-child(odd) {
+	grid-column: 1 / -1;
+}
+
 .capability-card {
 	display: flex;
 	flex-direction: column;
@@ -1160,6 +1164,13 @@ h3 {
 
 .text-link:hover {
 	color: var(--text);
+}
+
+.link-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem 1.5rem;
+	margin-top: auto;
 }
 
 .echo-section {
