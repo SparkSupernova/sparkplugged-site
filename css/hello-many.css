@@ -1,0 +1,79 @@
+/* Hello, Many!: a consistent reading rhythm; color identifies actions. */
+.welcome-page {
+  --welcome-space: 3rem;
+  --welcome-ink: #e4e8f2;
+  font-family: "DM Sans", sans-serif;
+  color: var(--welcome-ink);
+}
+.welcome-page::before { content: none; }
+.welcome-page .container { width: min(960px, calc(100% - 3rem)); }
+.welcome-page h1, .welcome-page h2, .welcome-page h3,
+.welcome-page .brand, .welcome-page .eyebrow { font-family: inherit; }
+.welcome-page h1, .welcome-page h2, .welcome-page h3 { color: inherit; }
+.welcome-page .welcome-hero { padding-block: var(--welcome-space); }
+.welcome-page .eyebrow {
+  margin: 0 0 1rem; color: var(--cyan); font-size: .875rem;
+  font-weight: 500; letter-spacing: .025em; text-transform: none;
+}
+.welcome-page h1 {
+  max-width: none; margin: 0 0 1.5rem;
+  font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.12; letter-spacing: -.035em;
+}
+.welcome-wave { white-space: nowrap; font-size: .65em; vertical-align: .08em; }
+.welcome-page h2 { margin: 0 0 1.25rem; font-size: 1.65rem; line-height: 1.3; letter-spacing: -.02em; }
+.welcome-page h3 { margin: 0 0 .5rem; font-size: 1.15rem; line-height: 1.4; letter-spacing: 0; }
+.welcome-page main p { max-width: 68ch; margin: 0 0 1rem; font-size: 1.0625rem; line-height: 1.7; color: inherit; }
+.welcome-page .cta-group { margin-top: 1.5rem; align-items: center; gap: 1.5rem; }
+.welcome-page main > section, .welcome-page .welcome-closing {
+  padding-block: var(--welcome-space); border-top: 1px solid var(--line-strong);
+}
+.welcome-page main > section > :last-child, .welcome-origin-copy > :last-child,
+.welcome-page .welcome-closing > :last-child { margin-bottom: 0; }
+.welcome-paths { display: grid; gap: 0; }
+.welcome-path {
+  display: block; padding: 1.5rem 0; text-decoration: none;
+  border-bottom: 1px solid var(--line); color: inherit;
+}
+.welcome-path:first-child { padding-top: 0; }
+.welcome-path:last-child { border-bottom: 0; padding-bottom: 0; }
+.welcome-page .welcome-path p { margin-bottom: .5rem; }
+.welcome-path-action, .welcome-page .text-link { color: var(--cyan); font-size: 1rem; font-weight: 600; text-decoration: underline; text-underline-offset: .25em; }
+.welcome-path:hover .welcome-path-action, .welcome-page .text-link:hover { color: var(--text); }
+.welcome-contact-links { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 1.5rem; }
+.welcome-page .btn { font-family: inherit; font-size: 1rem; border-radius: .4rem; }
+.welcome-page .nav-logo { filter: none; }
+.welcome-page a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 5px; }
+.welcome-page section[id] { scroll-margin-top: 7rem; }
+.welcome-page .footer-grid p, .welcome-page .footer-bottom, .welcome-page .nav-links a, .welcome-page .footer-links a { color: var(--welcome-ink); }
+@media (max-width: 700px) {
+  .welcome-page { --welcome-space: 2rem; }
+  .welcome-page .container { width: calc(100% - 2rem); }
+  .welcome-page .nav-inner { display: flex; flex-wrap: wrap; gap: .75rem; padding-block: 1rem; }
+  .welcome-page .nav-links { flex-wrap: wrap; white-space: normal; overflow: visible; padding: 0; mask-image: none; -webkit-mask-image: none; }
+  .welcome-page h1 { font-size: clamp(2.25rem, 8.5vw, 3.5rem); }
+  .welcome-page .cta-group, .welcome-contact-links { align-items: flex-start; flex-direction: column; }
+  .welcome-page .btn { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) { html:has(.welcome-page) { scroll-behavior: auto; } }
+
+/* Spark's original artwork stays intact; only the page overlay supplies the fade. */
+.welcome-page main { position: relative; isolation: isolate; }
+.welcome-page main::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: min(100%, 56rem);
+  z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(to bottom, transparent 35%, var(--bg) 100%),
+    linear-gradient(to right, rgba(7, 9, 20, .96) 0%, rgba(7, 9, 20, .9) 42%, rgba(7, 9, 20, .45) 100%),
+    url("../assets/hello-many/nova-cultivation.png") center top / cover no-repeat;
+}
+.welcome-page .welcome-hero p:not(.eyebrow) { max-width: 48ch; }
+.welcome-page .btn-primary { background: var(--cyan); box-shadow: none; }
+@media (max-width: 700px) {
+  .welcome-page main::before {
+    height: 48rem;
+    background:
+      linear-gradient(to bottom, transparent 20%, var(--bg) 100%),
+      linear-gradient(to right, rgba(7, 9, 20, .92), rgba(7, 9, 20, .82)),
+      url("../assets/hello-many/nova-cultivation.png") 68% top / cover no-repeat;
+  }
+}
